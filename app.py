@@ -15,7 +15,12 @@ def name():
 @app.route('/', methods = ['POST'])
 def receive():
     receivedparameters = request.values.get('Body')
-    print(receivedparameters)
+    if receivedparameters.casefold() == "hi":
+        messagefrom = str(request.values.get('From'))
+        print(messagefrom)
+        message1=client.messages.create(to = "whatsapp:+919902233996", from_ = 'whatsapp:+14155238886', body = 'hi how are u')
+        print(message1)
+    
     return '<Response></Response>'
 
 
